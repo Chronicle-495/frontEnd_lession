@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>课时1</title>
+</head>
+<body>
+<!--&lt;!&ndash;外部文件引用成功&ndash;&gt;-->
+<!--&lt;!&ndash;  空标签在一些浏览器内无效 < /> &ndash;&gt;-->
+<!--<script type="text/javascript" src="js/index.js"></script>-->
+<!--</body>-->
+
+<!--内部直接引用-->
+<!--    <script type="text/javascript">-->
+<!--        document.write('I am a inner JS')-->
+<!--    </script>-->
+
+<!--&lt;!&ndash;外部和内部同时使用，只显示外部&ndash;&gt;-->
+<!--<script type="text/javascript" src="js/index.js">-->
+<!--    document.write('inner JS')-->
+<!--</script>-->
+
+<!--&lt;!&ndash;多写几个无所谓&ndash;&gt;-->
+<!--<script type="text/javascript">-->
+<!--    document.write('inner JS1')-->
+<!--</script>-->
+<!--<script type="text/javascript">-->
+<!--    document.write('inner JS2')-->
+<!--</script>-->
+
+<!--&lt;!&ndash;type故意写错，不让他执行, 作用是当成脚本来用&ndash;&gt;-->
+<!--<script type="text/tpl">-->
+<!--    <div class="box">{{name}}</div>-->
+<!--</script>-->
+
+<!--&lt;!&ndash;一般情况下都是布局样式逻辑相分离，少数情况下写一起&ndash;&gt;-->
+
+<script type="text/javascript">
+    // ==================================
+    // // 变量声明
+    // var a;  // 声明变量为a
+    // a = 3;  // 赋值为3
+    // var a = 3;  // 变量声明并赋值
+    // var x = 1,
+    //     y = 2;  // 习惯上是多变量赋值的
+    // // 不写分号也可以，但最好是写上
+    // ==================================
+    // // 重复赋值
+    // var a = 1;
+    // a = 2;
+    // document.write(a);
+    // ==================================
+    // 企业开发 命名规范
+    // 不能以数字开头，可以字母 / _ / $ 开头
+    // 关键字和保留字不可以使用
+    // 语义化，结构化
+    // js_header, J_header, j_header
+    // js-header, J-header, j-header
+    // ==================================
+    // var x = 3,
+    //     y = 4;
+    // var z = x + y;
+    // document.write(z);
+    // ==================================
+    // JS的值：
+    // 原始值 Number String Boolean undefined null
+    var a = 1; // Number
+    var a = 3.14;   // Number
+    var str = '我爱编程'  // 字符串，双引号也可
+    // 基本上 动态语言 -> 脚本语言 -> 解释型语言 -> 弱类型语言
+    // 静态语言 -> 编译型语言 -> 弱类型语言
+    var a = true;
+    // document.write(a);
+    var a = undefined;  // 未定义的，还没赋值
+    // document.write(a);
+    // 引用值
+    // object array function date RegExp
+    var arr = [1, 2, 3, 4]  // array
+    arr.push(5);
+    document.write(arr);    // 1,2,3,4,5
+    arr = [1, 2];
+    document.write(arr);    // 从新赋值, 1,2
+    // 原始值在栈里，不可修改
+    var arr1 = [1, 2, 3, 4];
+    var arr2 = arr1;
+    document.write(arr1+ '|' + arr2);
+</script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>循环</title>
+</head>
+<body>
+<script type="text/javascript">
+    for (var i = 0; i < 100; i++) {
+        console.log(i);
+    }
+
+    // 对象 object
+    var person = {
+        name: '小夏',
+        // 属性名:属性值, k-v
+        age: 18,
+        height: 180,
+        weight: 140,
+        job: 'web开发工程师'
+    }
+    console.log(person.weight);
+
+    // typeof()
+    console.log(typeof (123));
+    console.log(typeof (person));
+    console.log(typeof ([]));
+    console.log(typeof (null));
+    // null曾经是引用类型，后来才是数值类型, 比较特殊
+    console.log(typeof (undefined));
+    // undefined返回undefined
+    console.log(typeof (function () {
+    }));
+    // 返回function
+    console.log(typeof (1 - "1"));
+    // 隐式类型转换, 结果是number
+    console.log(typeof (typeof (a)));
+    //typeof (typeof (x)) 一定是string
+    // 显式类型转换
+    console.log(Number('123'));
+    console.log(parseInt('1283'));
+    console.log(parseInt(null));    // 失败返回NaN
+    console.log(parseInt('3.66'));  // 返回3
+    console.log(parseInt('A', 16));
+    console.log(parseInt('a', 16)); // 大小写无所谓, 基数范围2-36
+
+    // 转换为float, 保留两位小数, 四舍五入式
+    console.log(parseFloat('3.1415926').toFixed(2));
+    // toString(), null和undefined不能用, 括号里可以填进制数
+    // 隐式类型转换
+    var a = 1 == "1";
+    console.log(a);     // true
+    var a = 1 === "1";
+    console.log(a);     // false, 不转换
+    var a = NaN === "NaN";
+    console.log(a);     // false
+    var a = 2 > 1 == 1;
+    console.log(a);     // false
+    var a = undefined > 0;  // false, >, <, ==都false, null也是
+
+    var a3 = undefined == null;
+    console.log(a3);        // true, 真tm神奇, 但 === 仍然是false
+
+    var num = '123';
+    console.log(+num, -num);    // Number类型, NaN也同理
+
+    console.log(isNaN('123'));  // false
+    console.log(isNaN(123));    // false
+    console.log(isNaN('a'));    // true
+    console.log(isNaN(null));   // false
+    console.log(isNaN(undefined));  // true
+// =======================================================
+    // 日程安排
+    var weekday = window.prompt('请输入星期几:'),
+        time = window.prompt('请输入上午或下午:');
+
+    switch (weekday) {
+        case '星期一':
+            if (time === '上午') {
+                console.log('看书');
+            } else if (time === '下午') {
+                console.log('逛街');
+            }
+            break;
+        //...
+    }
+
+    // fibnacci 数列
+    var n = window.prompt('请输入第几位:');
+    var n1 = 1,
+        n2 = 1,
+        n3;
+    if (n <= 2) {
+        console.log(1);
+    }
+
+    for (var i = 2; i < n; i++) {
+        n3 = n1 + n2;
+        n1 = n2;
+        n2 = n3;
+    }
+    console.log(n3);
+</script>
+</body>
+</html>

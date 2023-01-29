@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数</title>
+</head>
+<body>
+<script type="text/javascript">
+    // function test(a, b, c) {
+    //     var a = 1,
+    //         b = 2;
+    //     console.log(a + b);
+    // }
+
+    var test = function test1(a, b, c) {
+        var a = 1,
+            b = 2;
+        console.log(a + b);
+        console.log("test.length: ", test.length);
+        console.log("test1.length", test1.length);
+    }
+    test();
+    console.log(test.name);     // test.name = test1,
+    // test1是到时候用于自调用的
+
+    // 函数字面量 等于 匿名函数表达式
+    var test = function (a, b, c) {
+        var a = 1,
+            b = 2;
+        console.log(a + b);
+        // 获取实参数量， arguments是数组
+        console.log(arguments.length);
+        console.log(test.length);
+    }
+    test();
+    // 形参和实参数量可以不等
+
+    function test2(name) {
+        // if (!name) {    // 判断是否为空串
+        //     return;
+        // }
+        // console.log(name);
+        console.log(name || "你还没有填写姓名.");
+        return name || "你还没有填写姓名.";
+    }
+    test2();
+    test2("礼拜");
+    console.log("执行完成");
+
+    // 函数体里面可以访问外面，外面不可访问里面
+    // 函数内可以修改外部变量
+</script>
+</body>
+</html>
