@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>课时8</title>
+</head>
+<body>
+<!--我引用这个插件-->
+<script type="text/javascript" src="teacher.js"></script>
+<!--&lt;!&ndash;或者通过data-config在后台拿到对象字符串&ndash;&gt;-->
+<!--<div data-config="{name: }"></div>-->
+<script type="text/javascript">
+    // // 小实验,
+    // var arr = [1, 2, 3, 4];
+    // var num = 5;
+    // arr.splice(1, 1);
+    // console.log(arr);
+    // // arr.indexOf(x), 可以知道x下标, 不存在就返回-1
+    // hint: != 可类型转换, !== 不可
+
+
+    // 对象字面量, 对象直接量
+    // var attendance = {
+    //     students: [],
+    //     total: 6,
+    //     join: function (name) {
+    //         this.students.push(name);
+    //         // console.log(this.students);
+    //         if (this.students.length === this.total) {
+    //             console.log(name + '到课, 学生已到齐');
+    //         } else {
+    //             console.log(name + '到课, 学生未到齐');
+    //         }
+    //     },
+    //     leave: function (name) {
+    //         // 删除从第a位开始删除b项
+    //         // arr.splice(a, b)
+    //         var idx = this.students.indexOf(name);
+    //         if (idx !== -1)
+    //             this.students.splice(idx, 1);
+    //         console.log(name + '早退');
+    //         console.log(this.students);
+    //     },
+    //     classOver: function () {
+    //         this.students = [];
+    //         console.log('已下课');
+    //     }
+    // }
+    //
+    // attendance.join('张三');
+    // attendance.join('李四');
+    // attendance.join('王五');
+    // attendance.join('赵六');
+    // attendance.join('吴七');
+    // attendance.join('孙八');
+    // attendance.leave('李四');
+    // attendance.classOver();
+
+    // 构造函数
+    // 系统自带的构造函数
+    var obj = new Object();
+    obj.name = '张三';
+    obj.sex = '男士';
+    console.log(obj);
+
+    // // 实例化
+    // var teacher = new Teacher();
+    // console.log(teacher);
+
+    // var teacher1 = new Teacher();
+    // var teacher2 = new Teacher();
+    // teacher1.name = '李四';
+    // console.log(teacher1.name, teacher2.name);
+
+    var t1 = new Teacher({
+        name : "张三",
+        sex: "男",
+        weight: 145,
+        course: "JavaScript"
+    });
+    var t2 = new Teacher({
+        name : "李四",
+        sex: "女",
+        weight: 90,
+        course: "HTML"
+    });
+
+    t1.smoke();
+    t1.smoke();
+    t2.eat();
+</script>
+</body>
+</html>

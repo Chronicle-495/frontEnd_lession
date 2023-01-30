@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>课时8</title>
+</head>
+<body>
+<script type="text/javascript">
+    // function test1() {
+    //     console.log(1);
+    // }
+    //
+    // function test2() {
+    //     console.log(2);
+    // }
+    //
+    // test2();
+    //
+    // function test3() {
+    //     test1();
+    // }
+    //
+    // test3();
+
+    // =============================================================
+    // 自动执行，执行完成以后立即释放 - 示例：初始化函数
+    // 名字 IIFE - immediately-invoked function expression
+    // 写法1 (function()) {函数体}(参数);  更清晰
+    // 写法2 (function() {函数体}(参数));   w3c推荐
+    // 其实function和()中间是可以写函数名的，
+    // 但由于执行完就销毁了，所以写了也没用
+    var num = (function (a, b) {
+        // var a = 1,
+        //     b = 2;
+        console.log(a + b);
+        return a + b; // 可以return
+    }(2, 4));
+    console.log(num);
+
+    // 不行
+    // function f() {
+    //
+    // }();
+
+    // // 可以执行
+    // var test = function () {
+    //     console.log(1);
+    // }();
+    // // 表达式才能被执行符号执行
+    //
+    // var test = function () {
+    //     console.log(1);
+    // }
+    // console.log(test);
+    //
+    // var test1 = function () {
+    //     console.log(2);
+    // }();
+    // console.log(test1); // undefined, 因为打印完就销毁了.
+
+    (function test() {
+        console.log(123);
+    })();   // 变成表达式的时候, test就没了
+
+    // 在函数声明之前加符号，就可以执行了
+    // 甚至||, &&都可以
+    +function test() {
+        console.log(666);
+    }();
+
+    // 不报错(优先解析为表达式了), 但也不执行
+    function test(a) {
+        console.log(998);
+    }
+
+    (6);
+
+    // 逗号执行多个表达式会返回最后一个
+    var num = (2 - 1, 6 + 5, 24 + 1);
+    console.log(num);
+
+    // 经典案例
+    // function test() {
+    //     var arr = [];
+    //
+    //     for (var i = 0; i < 10; i++) {
+    //         arr[i] = function () {
+    //             document.write(i + ' ');
+    //         }
+    //     }
+    //     return arr;
+    // }
+    //
+    // var myArr = test();
+    // console.log(myArr);
+    //
+    // for (var j = 0; j < 10; j++) {
+    //     myArr[j]();
+    // }
+
+    // 都是10的原因是关键在于调用时期i的状态.
+
+    // 最常用
+    function test() {
+        var arr = [];
+        for (var i = 0; i < 10; i++) {
+            (function (j) {
+                arr[j] = function () {
+                    document.write(j + ' ');
+                }
+            })(i);
+        }
+        return arr;
+    }
+
+    var myArr = test();
+    for (var j = 0; j < 10; j++) {
+        myArr[j]();
+    }
+
+</script>
+
+</body>
+</html>

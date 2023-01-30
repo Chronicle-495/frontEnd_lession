@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <!--要求点击n输出n-1-->
+    <script type="text/javascript">
+        // var oLi = document.querySelectorAll('li');
+        // // console.log(oLi);
+        //
+        // for (var i = 0; i < oLi.length; i++) {
+        //     // 错误
+        //     // oLi[i].onclick = function () {
+        //     //     console.log(i); // 拿到i的时候，实际上是i结束的值
+        //     // }
+        //
+        //     // 正确
+        //     (function (j) {
+        //         oLi[j].onclick = function () {
+        //             console.log(j);
+        //         }
+        //     })(i);
+        // }
+
+        // var fn = (
+        //     function test1() {
+        //         return 1;
+        //     },
+        //         function test2() {
+        //             return "2";
+        //         }
+        // )();
+        // console.log(typeof(fn));    // string
+
+        var a = 10;
+        // 函数声明不是false
+        // (function b(){}) 加了括号, 变成表达式了
+        // 名字就忽略了, 下面的b就是undefined了
+        if (function b(){}) {
+            a += typeof(b);
+        }
+        console.log(a); // "10undefined"
+        // typeof(undefined) -> "undefined"
+        // 表达式是忽略函数名的!!!
+    </script>
+</ul>
+</body>
+</html>

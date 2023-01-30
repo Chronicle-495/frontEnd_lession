@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+  // AO GO 解决作用域, 作用域链相关所产生的一切问题
+  // AO -> function
+
+  // 2．函数存储作用域链的容器, 作用域链
+  // AO/GO
+  // AO, 函数的执行期上下文, GO，全局的执行期上下问
+  // 函数执行完成以后，AO是要销毁的,
+  // AO是一个临时的存储容器
+
+  function a() {
+    function b() {
+      var b = 2;
+    }
+
+    var a = 1;
+    b();
+  }
+
+  var c = 3;
+  a();
+
+  // if(true) {
+  // var x = 1;
+  // let y = 2;
+  // }
+  // console.log(x);  // 1
+  // console.log(y);  // ReferenceError: y is not defined
+
+  // 闭包
+  function sunSched() {
+    var sunSched = '';
+
+    var operation = {
+      setSched: function (thing) {
+        sunSched = thing
+      },
+      showSched: function () {
+        console.log('my schedule on Sunday is ' + sunSched);
+
+      }
+    }
+
+    return operation;
+  }
+
+  var sunSched = sunSched();
+
+  sunSched.setSched('study');
+  sunSched.setSched('working')
+  sunSched.showSched();
+
+  var obj = {
+    name: '',
+    eating: function () {
+
+    }
+  }
+
+  obj.eating();
+</script>
+</body>
+</html>
