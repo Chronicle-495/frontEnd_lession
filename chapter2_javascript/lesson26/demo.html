@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>课时9</title>
+</head>
+<body>
+<script type="text/javascript">
+    // function test() {
+    //     var num = 0;
+    //     function add() {
+    //         console.log(num++);
+    //     }
+    //     return add;
+    // }
+    //
+    // var add = test();   // add变量成为了一个新的函数
+    // add();
+    // add();
+    // add();
+    // add();
+    // add();
+    // add();
+
+    function myClass() {
+        var students = [];
+
+        var operations = {
+            join : function(name) {
+                students.push(name);
+                console.log(students);
+            },
+            leave: function(name) {
+                // for (var i = 0; i < students.length; i++) {
+                //     var item = students[i];
+                //
+                //     if (item.name === name) {
+                //         students.splice(i, 1);
+                //     }
+                // }
+                var idx = students.indexOf(name);
+                if (idx !== -1) {
+                    students.splice(idx, 1);
+                }
+                console.log(students);
+            }
+        }
+        return operations;
+    }
+
+    var obj = myClass();
+    obj.join("张三");
+    obj.join('李四');
+    obj.join('王五');
+    obj.leave('李四');
+</script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>课时9</title>
+</head>
+<body>
+<script type="text/javascript">
+    function Car(color, brand) {
+        this.color = color;
+        this.brand = brand;
+        this.drive = function() {
+            console.log('I am running.');
+        }
+        // 可以return, 但只能return引用值, return原始值没用.
+    }
+
+    var car = new Car('red', 'Tesla');
+    console.log(car.color);
+    console.log(car.brand);
+    car.drive();
+
+    // 包装类
+    // 原始值无方法属
+    // var a = 1;
+    // var b = 'abc';
+    // a.len = 3;
+    // b.add = 'bcd';
+    // a.reduce = function() {
+    // };
+
+    var a = new Number(1);
+    a.len = 1;
+    console.log(a + 1); // 参与运算会返回原始值
+
+    // new Number, new String, new Boolean
+
+    var arr = [1, 2, 3, 4, 5];
+    // arr.length = 2
+    arr.length = 6;
+    console.log(arr);
+
+    var str = 'abc';
+    str.length = 2;     //包装了，但没地方保存，所以删除了
+    console.log(str);
+    console.log(str.length);
+
+    // 原始值加属性没地方保存，对象可以
+
+    function nCar(brand, color) {
+        this.brand = 'Benz';
+        this.color = 'red';
+    }
+    var car = new nCar('Tesla', 'blank');
+    console.log(car);
+
+    function foo1(x) {
+        console.log(arguments);
+    }
+    foo1(1, 2, 3, 4, 5);    // 1, 2, 3, 4, 5
+
+    function foo2(x) {
+        console.log(arguments);
+    }(1, 2, 3, 4, 5);       // 解析成1函数声明和1表达式，不执行
+
+    (function foo3(x) {
+        console.log(arguments);
+    })(1, 2, 3, 4, 5);      // 1 2 3 4 5
+    
+    function b(x, y, a) {
+        a = 10;
+        console.log(arguments[2]);
+        arguments[2] = 20;
+        console.log(a);
+    }
+    b(1, 2, 3);             // js形参一赋值，实参跟着变
+
+    var str = "a";
+    var pos = str.charCodeAt(0);    // 参数是下标
+    // > 255, 说明1个字符占2个字节(Unicode)
+    // <= 255, 说明1个字符占1个字节(ASCII)
+    console.log(pos);
+</script>
+</body>
+</html>

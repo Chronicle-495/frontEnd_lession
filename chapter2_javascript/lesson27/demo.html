@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>课时10</title>
+</head>
+<body>
+<script type="text/javascript">
+    function Compute() {
+        var args = arguments, res;
+        this.plus = function () {
+            res = 0;
+
+            for (var i = 0; i < args.length; i++) {
+                var item = args[i];
+                res += item;
+            }
+            console.log(res);
+        }
+
+        this.times = function () {
+            res = 1;
+            for (var i = 0; i < args.length; i++) {
+                var item = args[i];
+                res *= item;
+            }
+            console.log(res);
+        }
+    }
+
+    var compute = new Compute(2, 4, 6);
+    compute.plus();
+    compute.times();
+
+    // ==============================================================
+    function Handphone(color, brand, system) {
+        this.color = color;
+        this.brand = brand;
+        this.system = system;
+
+        // 实质
+        // var this = {
+        //     __proto__: Handphone.prototype
+        // }
+    }
+
+    Handphone.prototype = {
+        rom: "64G",
+        ram: "6G",
+        screen: "18:9",
+        call: function () {
+            console.log("I am calling somebody");
+        }
+    }
+    // console.log(Handphone.prototype);
+    // prototype构造函数生成的公共祖先
+    // 可以在这里增加父类属性
+    // 自己有的访问自己的，没有才访问祖先的
+    // 需要写死的写到prototype上
+    // 一般方法挂在原型上，属性写在内部(属性需要配置，方法不需要)
+
+    console.log(Handphone.constructor);
+    // constructor -> 构造函数本身
+    // contructor可被prototype对象更改
+    // 没有实例化, __proto__不会存在
+
+    // =============================================================
+    // window return
+    // windows.函数 = 函数 和 return 函数 是一样的
+
+    // 插件标配
+    ((function () {
+        function Test() {
+        }
+
+        window.Test = Test;
+    })());
+
+    // 习惯在前面加
+    ;(function () {
+    })()
+
+    //写个插件, 任意传两个数字, 调用插件内部方法可加减乘除
+    ;(function () {
+        var Compute = function (opt) {
+            this.x = opt.firstNum;
+            this.y = opt.secondNum;
+        }
+
+        Compute.prototype = {
+            plus : function() {
+                return this.x+this.y;
+            },
+
+            minus: function () {
+
+            },
+
+            mul: function() {
+
+            },
+
+            div: function () {
+
+            }
+        }
+
+        window.Compute = Compute;   // 保存到外界
+    })();
+
+    var compute = new Compute({
+        firstNum: 1,
+        secondNum: 2
+    });
+    console.log(compute.plus())
+
+    // =============================================================
+    Professor.prototype.tskill = "JAVA";
+    function Professor() {
+    }
+    var professor = new Professor();
+
+    Teacher.prototype = professor;
+    function Teacher() {
+        this.mskill = 'JS/JQ';
+    }
+    var teacher = new Teacher();
+
+    Student.prototype = teacher;
+    function Student() {
+    }
+    var student = new Student();
+    console.log(student);
+    // 原型链的顶端是是Object.prototype
+    // 父辈属性引用值可变, 但不推荐这么做
+    // this.属性, 自己变, 父辈不变
+
+    // =============================================================
+    function Car() {
+        this.brand = 'Benz';
+    }
+    Car.prototype = {
+        brand : 'Mazda',
+        intro: function () {
+            console.log('我是' + this.brand + '车');
+        }
+    }
+    var car = new Car();
+    car.intro();            // 优先找自己
+    Car.prototype.intro();  // Car.prototype自己也是对象
+
+    // Object.create(对象, null), 因对象为原型创造新的对象
+    function Obj() {}
+    Obj.prototype.num = 1;
+    // obj1, obj2结果是一样的
+    var obj1 = Object.create(Object.prototype);
+    var obj2 = new Obj();
+    console.log(obj1);
+    console.log(obj2);
+
+    // call/apply
+    function Car(brand, color) {
+        this.brand = brand;
+        this.color = color;
+    }
+    var newCar = {
+        displacement: '3.0'
+    };
+    Car.call(newCar, 'Benz', 'red');
+    console.log(newCar);    // call更改了this的指向
+    Car.apply(newCar, ['Benz', 'red']);
+    console.log(newCar);    // apply更改了this的指向
+    // ['Benz', 'red']参数与Car的构造对应
+</script>
+</body>
+</html>
