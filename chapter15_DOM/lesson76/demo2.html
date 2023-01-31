@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>课时2</title>
+    <style>
+
+    </style>
+</head>
+<body>
+<!------------------------------------------------------>
+<!--&lt;!&ndash; 1 &ndash;&gt;-->
+<!--<div id="box">123123</div>-->
+
+<!------------------------------------------------------>
+<!--&lt;!&ndash; 2 &ndash;&gt;-->
+<!--<div>123123</div>-->
+<!--<div>234234</div>-->
+
+<!------------------------------------------------------>
+<!--&lt;!&ndash; 4 &ndash;&gt;-->
+<!--<div class="text">123</div>-->
+<!--<div>234</div>-->
+
+<!------------------------------------------------------>
+<!--&lt;!&ndash; 5 &ndash;&gt;-->
+<!--<div id="box">-->
+<!--    <h1>-->
+<!--        <p>123</p>-->
+<!--    </h1>-->
+<!--</div>-->
+<!--<div>-->
+<!--    <p>234</p>-->
+<!--</div>-->
+
+
+<!--<div>123</div>-->
+<!--<div>234</div>-->
+<!--<div>345</div>-->
+
+<!------------------------------------------------------>
+<!--&lt;!&ndash; 6 &ndash;&gt;-->
+<!--<ul>-->
+<!--    <li>-->
+<!--        <h2>我是标题标签</h2>-->
+<!--        <a href="">我是超链接标签</a>-->
+<!--        <p>我是段落标签</p>-->
+<!--    </li>-->
+<!--</ul>-->
+
+<!------------------------------------------------------>
+<!-- 7 -->
+<ul>
+    <li>
+        <!--我是注释-->
+        <a href="">我是超链</a>
+        <p>我是段落标签</p>
+        <h1>我是标题</h1>
+    </li>
+</ul>
+<script type="text/javascript">
+    // ==================================================
+    // 1
+    // console.log(document);
+    // document 实际上是一个 Object
+
+    // ==================================================
+    // // 2
+    // var box = document.getElementById('box');
+    // // IE8以下不区分大小写，现在区分
+    // // IE8以下还能通过name值找
+    // // 在大公司id一般称为钩子, 用来对接后端, 不用于样式
+    // // 一般id都不是给你定的，后端会去处理的
+    // console.log(box);
+
+    // ==================================================
+    // // 3
+    // var boxes = document.getElementsByTagName('div');
+    // console.log(boxes);
+
+    // ==================================================
+    // // 4 querySelector, querySelectorAll, HTML5新引入API, IE7就有了
+    // // querySelector, 与css选择器写法一样, id#, class., 标签直接写
+    // // 只选第一个, querySelectorAll全选
+    // var div1 = document.querySelector('div');
+    // var div2 = document.querySelector('.text');
+    // console.log(div1, div2);
+
+    // ==================================================
+    // 5, > => 直系元素
+    // var p1 = document.querySelector('div > p');
+    // var p2 = document.querySelector('div p');
+    // var box = document.querySelector('#box');
+    // console.log(p1, p2, box);
+    // var divs = document.querySelectorAll('div');
+    // console.log(divs);
+    // 缺点：性能差, 基本不用, 且结果不可更改, 不适应实时变化.
+
+    // ==================================================
+    // 6
+    // 遍历节点树 -> 元素节点树
+    // 节点包含元素 -> 元素节点 = DOM元素
+    // var a = document.getElementsByTagName('a')[0];
+    // console.log(a.parentElement);   // parentElement
+
+    // ==================================================
+    // 7
+    // 结点很多: 元素节点-1, 属性节点-2, 文本节点-3,
+    // 注释节点-8, document-9, DocumentFragment-11
+    // 数字是节点号
+    // 换行算文本节点
+    var li = document.getElementsByTagName('li')[0];
+    console.log(li.childNodes);
+    // firstChild, lastChild, nextSibling, previousSibling
+    // parentNode, parentElement IE9及以下不支持
+    // children 子元素, IE7以下不支持
+    // childElementCount = children.length
+    // firstElementCHild, lastElementCHild
+    // nextElementSibling, previousElementSibling
+    // children有人用, 其他的没人用的
+</script>
+</body>
+</html>

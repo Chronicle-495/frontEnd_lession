@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>课时12</title>
+    <style type="text/css">
+        .wrap {
+            width: 700px;
+            margin: 0 auto;
+            border: 1px solid #000;
+        }
+
+        .top, .foot {
+            height: 50px;
+            background-color: black;
+        }
+
+        .main .left,
+        .main .right,
+        .main .content {
+            float: left;
+            background-color: green;
+        }
+
+        .main .left {
+            width: 100px;
+        }
+
+        .main .content {
+            width: 100%;
+            background-color: red;
+        }
+
+        .main .right {
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <div class="top"></div>
+    <div class="main">
+        <div class="left">123</div>
+        <div class="content">234</div>
+        <div class="right">123</div>
+    </div>
+    <div class="foot"></div>
+</div>
+<script type="text/javascript">
+    // // 圣杯继承
+    // function inherit(Target, Origin) {
+    //     function Buffer() {
+    //     }
+    //     Buffer.prototype = Origin.prototype;
+    //     Target.prototype = new Buffer();
+    //     Target.prototype.constructor = Target;
+    //     Target.prototype.super_class = Origin;
+    // }
+
+    // 企业级写法, 和之前一样的
+    var inherit = (function () {
+        var Buffer = function () {
+        }
+        return function (Target, Origin) {
+            Buffer.prototype = Origin.prototype;
+            Target.prototype = new Buffer();
+            Target.prototype.constructor = Target;
+            Target.prototype.super_class = Origin;
+        }
+    })();
+
+    Teacher.prototype.name = "Mr. Zhang";
+
+    function Teacher() {
+    }
+
+    function Student() {
+    }
+
+    function Buffer() {
+    }
+    inherit(Student, Teacher);
+    Student.prototype.age = 18;
+    var s = new Student();
+    var t = new Teacher();
+    console.log(s);
+    console.log(t);
+</script>
+</body>
+</html>

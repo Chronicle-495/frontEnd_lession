@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        /*div {*/
+        /*    width: 200px;*/
+        /*    height: 200px;*/
+        /*    background-color: red;*/
+        /*}*/
+        /*#box {*/
+        /*    color: red;*/
+        /*}*/
+    </style>
+</head>
+<body>
+<!--DOM: 通过javascript操作HTML和XML, 不操作CSS-->
+
+<!---------------------------------------------------------------------------------->
+<!-- 1 -->
+<!--XML, 可自定义标签-->
+<!--XML -> XHTML -> HTML-->
+<!--标签及内部文本加一起叫元素-->
+<!--<person>-->
+<!--    <username>张三</username>-->
+<!--    <sex>男</sex>-->
+<!--    <age>18</age>-->
+<!--</person>-->
+<!--<person>-->
+<!--    <username>李四</username>-->
+<!--    <sex>女</sex>-->
+<!--    <age>23</age>-->
+<!--</person>-->
+<!---------------------------------------------------------------------------------->
+<!--&lt;!&ndash; 2 &ndash;&gt;-->
+<!--<div></div>-->
+<!---------------------------------------------------------------------------------->
+<!--&lt;!&ndash; 3 &ndash;&gt;-->
+<!--<div id="box" class="box"></div>-->
+<!--<div id="box2" class="box"></div>-->
+<!---------------------------------------------------------------------------------->
+<!-- 5 -->
+<div>123</div>
+<div>234</div>
+<div>345</div>
+<script type="text/javascript">
+    // =========================================================
+    // // 1
+    // // 方法结果是一个类集合, 用标签Tag获取就是一组
+    // var person = document.getElementsByTagName("person")[0];
+    // console.log(person);
+    //
+    // // 用name就不行, name是保留字
+    // var username = person.getElementsByTagName('username')[0];
+    // console.log(username.innerText);    // 直接取文本
+
+    // =========================================================
+    // // 2
+    // var div = document.getElementsByTagName('div')[0];
+    // console.log(div);
+    // div.style.backgroundColor = 'green'
+    // console.log(div);
+    // // 操作的是style="background-color: green",
+    // // 是个内联样式, 优先级最高.
+    // // jQuery无非也是如此, 没有直接操作css
+
+    // =========================================================
+    // // 3
+    // var box = document.getElementById('box');
+    // console.log(box);
+
+    // =========================================================
+    // // 4
+    // var boxes = document.getElementsByClassName('box');
+    // console.log(boxes);
+    // // 0 1 box box2, 但取[1]时对应的就是box2
+
+    // =========================================================
+    // 5 事件: onclick每个元素都有
+    // var box = document.getElementById('box');
+    // box.onclick = function() {
+    //     console.log(1);
+    // }
+    var boxes = document.getElementsByTagName('div');
+    for (var i = 0; i < boxes.length; i++) {
+        boxes[i].onclick = function() {
+            console.log(this.innerText);
+        }
+    }
+</script>
+</body>
+</html>
