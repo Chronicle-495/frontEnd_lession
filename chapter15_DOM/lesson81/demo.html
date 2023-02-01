@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>课时9</title>
+    <style type="text/css">
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: green;
+        }
+
+        button {
+            outline: none;
+        }
+
+        .loading {
+            background-color: #ddd;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<!----------------------------------------------------------->
+<!--&lt;!&ndash; 1 &ndash;&gt;-->
+<!--<div></div>-->
+
+<!----------------------------------------------------------->
+<!--&lt;!&ndash; 2 &ndash;&gt;-->
+<!--&lt;!&ndash;<button onclick="console.log(1)">123</button>&ndash;&gt;-->
+<!--<button>加载更多</button>-->
+
+<!----------------------------------------------------------->
+<!--&lt;!&ndash; 3 &ndash;&gt;-->
+<!--<button onclick="console.log(1)">加载更多</button>-->
+
+<!----------------------------------------------------------->
+<!-- 4 -->
+<!-- ul>li*5 -->
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+</ul>
+<script type="text/javascript">
+    // 'use strict'; // 严格模式
+    // ==================================================
+    // // 1. 事件
+    // // 事件 -> 反馈
+    // // 事件本身存在, 我们能做的是绑定反馈
+    // var oDiv = document.getElementById('div');
+    //
+    // // 句柄绑定
+    // oDiv.onclick = function() {
+    //     this.style.backgroundColor = 'orange';
+    // }
+
+    // 事件 + 事件的反馈 = 交互 = 前端核心
+
+    // ==================================================
+    // // 2.
+    // var oBtn = document.getElementsByTagName('button')[0];
+    // oBtn.onclick = function() {
+    //     this.innerHTML = '加载中...';
+    //     this.className = 'loading';
+    //
+    //     var self = this;
+    //     setTimeout(function() {
+    //         // 函数的this指的是window
+    //         self.innerHTML = '加载更多';
+    //         self.className = '';
+    //     }, 2000);
+    // }
+
+    // ==================================================
+    // // 3. elem.addEventListener(事件类型, 事件处理函数, useCapture)
+    // // 增加事件监听器
+    // var oBtn = document.getElementsByTagName('button')[0];
+    //
+    // oBtn.addEventListener('click', function () {
+    //     this.innerHTML = '加载中...';
+    //     this.className = 'loading';
+    //
+    //     var self = this;
+    //     setTimeout(function () {
+    //         // 函数的this指的是window
+    //         self.innerHTML = '加载更多';
+    //         self.className = '';
+    //     }, 2000);
+    // }, false);
+    //
+    // oBtn.addEventListener('click', function () {
+    //     console.log('加载更多数据');
+    // }, false);
+    //
+    // oBtn.addEventListener('click', function () {
+    //     console.log(1);
+    // }, false);
+    // // 只能接匿名, 外置函数就不行, 因为要求函数引用要不同
+    // // IE8 及以下的绑定, 只有两个参数, 它不管函数引用, 有几个打几个
+    // oBtn.attachEvent('onclick', function () {
+    //     console.log(2);
+    // });
+
+    // ==================================================
+    // 4 封装addEvent
+    // var oLi = document.getElementsByTagName('li'),
+    //         len = oLi.length,
+    //         item;
+    //
+    // for (var i = 0; i < len; i++) {
+    //     item = oLi[i];
+    //
+    //     item.addEventListener('click', function () {
+    //         console.log(this.innerHTML);
+    //         // this指向item
+    //         // attachEvent的this指向window
+    //     }, false);
+    // }
+    
+    var oBtn = document.getElementsByTagName('button')[0];
+    
+    function addEvent(el, type, fn) {
+        if (el.addEventListener) {
+            el.addEventListener(type, fn, false);
+        } else if (el.attachEvent) {
+            el.attachEvent('on' + type, fn.call(el));
+        } else {
+            el['on' + type] = fn;
+        }
+    }
+
+    // 解除
+    // element.onclick = null/false
+    // element.removeEventListener('click', fn, false);
+    // 注意, fn的函数引用得是同一个, 否则接触不了
+    // element.detachEvent('onclick', fn);
+
+    // =========================================================
+    // 实现按钮只能点击一次
+    // oBtn.addEventListener('click', test, false);
+    // function test() {
+    //     this.removeEventListener('click', test, false);
+    // }
+    // 替代方案
+    // oBtn.addEventListener('click', function test() {
+    //     this.removeEventListener('click', test, false);
+    // }, false);
+    // 替代方案2
+    oBtn.addEventListener('click', function () {
+        this.removeEventListener('click', arguments.callee, false);
+    }, false);
+    // =========================================================
+</script>
+</body>
+</html>

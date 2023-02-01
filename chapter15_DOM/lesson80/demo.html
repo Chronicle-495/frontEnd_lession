@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>课时8</title>
+    <style type="text/css">
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: green;
+        }
+        .box::after {
+            content: "";
+            display: block;
+            width: 50px;
+            height: 50px;
+            background-color: red;
+        }
+
+        .box.active::after {
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+<div class="box" style="width: 100px; height: 200px; background-color: green">
+
+</div>
+<script type="text/javascript">
+    // =========================================================
+    // 1
+    // DOM简洁操作CSS
+    var oDiv = document.getElementsByTagName("div")[0];
+    oDiv.style.width = "200px"; // 这是附加, 取不到css中的值
+    oDiv.style.height = "200px";
+    oDiv.style.backgroundColor = "green";
+    // oDiv.style.border = "5px solid #000";
+    // 符合值拆解写
+    oDiv.style.borderWidth = "5px";
+    oDiv.style.borderStyle = "solid";
+    oDiv.style.borderColor = "#000";
+    oDiv.style.position = "absolute";
+    oDiv.style.left = "200px";
+    oDiv.style.top = "300px";
+    // 保留字前面加css前缀
+    oDiv.style.cssFloat = "left";
+    // 查看CSS属性的方法
+    console.log(oDiv.style);
+    // =========================================================
+    // 2
+    var div = document.getElementsByTagName("div")[0];
+    console.log(window.getComputedStyle(div));
+    // 显示style设置值, 没设置的显示默认值(是绝对值)
+    //  window.getComputedStyle(div, null).[属性], 查看计算样式
+    // null的
+    // IE8及以下不支持, 用elem.currentStyle
+
+    function getStyles(elem, prop) {
+        if (window.getComputedStyle) {
+            if (prop) {
+                return window.getComputedStyle(elem, null)[prop];
+            } else {
+                return window.getComputedStyle(elem, null);
+            }
+        } else {
+            if (prop) {
+                return elem.currentStyle[prop];
+            } else {
+                return elem.currentStyle;
+            }
+        }
+    }
+    console.log(getStyles(div, "height"));
+
+    div.onclick = function() {
+        // offsetWidth会干扰开发
+        // var width = parseInt(getStyles(div, "width"));
+        // this.style.width = width + 10 + "px";
+
+        this.className += ' active';
+    }
+    // 操作样式最好是加类
+
+
+</script>
+</body>
+</html>

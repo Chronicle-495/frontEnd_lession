@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<!--上面这行表示必须兼容w3c规范, 叫标准模式，没有就是怪异模式-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>课时4</title>
+    <style type="text/css">
+        .running {
+            color: green;
+        }
+
+        .warning {
+            color: orange;
+        }
+
+        .danger {
+            color: red;
+        }
+
+        .box {
+            position: absolute;
+            top: 200px;
+            left: 200px;
+            width: 200px;
+            height: 200px;
+            background-color: green;
+            margin: 10px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+<!--------------------------------------------------------------->
+<!--&lt;!&ndash; 1 &ndash;&gt;-->
+<!--<ul id="list"></ul>-->
+
+<!----------------------------------------------------------------->
+<!--&lt;!&ndash; 3 &ndash;&gt;-->
+<!--<div class="running">-->
+<!--    系统运行正常...-->
+<!--</div>-->
+
+<!----------------------------------------------------------------->
+<!--&lt;!&ndash; 4 &ndash;&gt;-->
+<!--HTML5给元素增加了一个属性, 叫做data-*.-->
+<!--<p data-name="aixiaoye">我叫艾小野</p>-->
+
+<!----------------------------------------------------------------->
+<!--&lt;!&ndash; 5 &ndash;&gt;-->
+<!--&lt;!&ndash;javascript:; 协议限定符，不让跳转&ndash;&gt;-->
+<!--<a href="javascript:;" data-uri="txwz" data-sort="free">天下无贼</a>-->
+<!--<a href="javascript:;" data-uri="fczlm" data-sort="pay">复仇者联盟</a>-->
+<!--<a href="javascript:;" data-uri="olbbg" data-sort="free">欧罗巴报告</a>-->
+<!--<a href="javascript:;" data-uri="plmxs" data-sort="pay">普罗米修斯</a>-->
+
+<!----------------------------------------------------------------->
+<!--&lt;!&ndash; 6 &ndash;&gt;-->
+<!--<ul id="list"></ul>-->
+
+<!----------------------------------------------------------------->
+<!-- 8 -->
+<div class="box">
+
+</div>
+<script type="text/javascript">
+    // ================================================
+    // // 1. 创建 document.createElement(), 放在堆里面了.
+    // var div = document.createElement('div');
+    // div.innerHTML = 123;
+    // document.body.appendChild(div); // 把 div 放到 body 里面.
+    // console.log(div);
+    // div.innerHTML = '<p>我是innerHTML的p标签</p>';
+    //
+    // // 创建 document.createTextNode()
+    // var text = document.createTextNode(' ');
+    // document.body.appendChild(text);
+    // console.log(text);
+    //
+    // var comment = document.createComment('我是注释');
+    // document.body.appendChild(comment);
+    // console.log(comment);
+    //
+    // var p = document.createElement('p');
+    // document.body.appendChild(p); // div等标签也可以用
+    // // appendChild 增加子节点, 也有剪切功能
+    // // insertBefore(a, b) 在某个节点前面插入一个节点, a插在b之前
+    // // removeChild(a) 删除某个节点, 是appendChild的逆操作, 栈里还有
+    // // a.remove() 真正销毁，内存也没了
+    //
+    // // div.innerHTML += '456';
+    //
+    // // parent.replaceChild(new, origin)
+
+    // ================================================
+    // // 2.
+    // var list = document.getElementById('list'),
+    //         data = [
+    //             {
+    //                 "title": "天下无贼",
+    //                 "area": "中国",
+    //             },
+    //             {
+    //                 "title" : "复仇者联盟",
+    //                 "area": "美国",
+    //             },
+    //             {
+    //                 "title": "咒怨",
+    //                 "area": "日本",
+    //             }
+    //         ]
+    //
+    // for (var i = 0; i < data.length; i++) {
+    //     item = data[i];
+    //
+    //     var li = document.createElement('li'),
+    //             h2 = document.createElement('h2'),
+    //             p = document.createElement('p');
+    //     h2.innerHTML = '电影名: <div class="title">' + item.title + '</div>';
+    //     p.innerHTML = '地区: ' + item.area;
+    //
+    //     li.appendChild(h2);
+    //     li.appendChild(p);
+    //     list.appendChild(li);
+    // }
+    //
+    // // setAttribute('属性名', '属性值');
+    // // getAttribute('', '')同上
+    // div.setAttribute('id', 'box');
+    // var attr = div.getAttribute('id', 'box');
+    // ================================================
+    // // 3
+    // var div = document.getElementById('div');
+    //
+    // function setSystemStatus(status) {
+    //     div.setAttribute('class', status);
+    //     switch (status) {
+    //         case 'running':
+    //             div.innerHTML = '系统正常运行中...';
+    //             break;
+    //         case 'warning':
+    //             div.innerHTML = '系统运行警告...';
+    //             break;
+    //         case 'danger':
+    //             div.innerHTML = '系统运行危险...';
+    //             break;
+    //         default:
+    //             div.innerHTML = '系统处于未知状态...';
+    //     }
+    // }
+
+    // ================================================
+    // // 4
+    // var p = document.getElementsByTagName('p')[0];
+    // console.log(p.dataset); // 管理data-*自定义属性
+    // console.log(p.dataset.name); // aixiaoye
+    // console.log(p.getAttribute('data-name')); // aixiaoye, 这个也行
+    // // setAttribute也行
+
+    // ================================================
+    // // 5
+    // var links = document.getElementsByTagName('a');
+    //
+    // for (var i = 0; i < links.length; i++) {
+    //     (function (j) {
+    //         links[j].onclick = function () {
+    //             var uri = this.dataset.uri,
+    //                     sort = this.dataset.sort;
+    //
+    //             if (sort === 'free') {
+    //                 window.open('https://www.baidu.com/' + uri);
+    //             } else {
+    //                 alert('这是付费电影');
+    //             }
+    //         }
+    //     })(i);
+    // }
+
+    // ================================================
+    // // 6
+    // // document.createDocumentFragment();
+    // // 创建文档碎片, 用于批量操作DOM
+    // var oUl = document.getElementById('list');
+    // var oFrag = document.createDocumentFragment();
+    // for (var i = 0; i < 10000; i++) {
+    //     var oLi = document.createElement('li');
+    //     oLi.innerHTML = i + '、这是第' + i + '个项目';
+    //     oLi.className = 'list-item';
+    //     oFrag.appendChild(oLi);
+    // }
+    // // 每次都要重新渲染引擎, 太费性能, 用oFrag
+    // oUl.appendChild(oFrag);
+
+    // ================================================
+    // // 7 封装一个滚动函数
+    // function getScollOffset() {
+    //     if (window.pageXOffset) {
+    //         return {
+    //             left: window.pageXOffset,
+    //             top: window.pageYOffset
+    //         }
+    //     } else {
+    //         return {
+    //             left: document.body.scrollLeft + document.documentElement.scrollLeft,
+    //             top: document.body.scrollTop + document.documentElement.scrollTop
+    //         }
+    //     }
+    // }
+
+    // ================================================
+    // 8 浏览器的标准模式和怪异模式
+    // console.log(document.compatMode);
+    // CSS1Compat标准模式, BackCompat怪异模式
+    // 浏览器可视区域
+    console.log(window.innerWidth, window.innerHeight);
+
+    // 兼容性代码
+    function getViewportSize() {
+        if (window.innerWidth) {
+            return {
+                width: window.innerWidth,
+                height: window.innerHeight
+            }
+        } else {
+            if (document.compatMode === 'BackCompat') {
+                return {
+                    width: document.body.clientWidth,
+                    height: document.body.clientHeight
+                }
+            } else {
+                return {
+                    width: document.documentElement.clientWidth,
+                    height: document.documentElement.clientHeight
+                }
+            }
+        }
+    }
+
+    function getScrollSize() {
+        if (document.body.scrollWidth) {
+            return {
+                width: document.body.scrollWidth,
+                height: document.body.scrollHeight
+            }
+        } else {
+            return {
+                width: document.documentElement.scrollWidth,
+                height: document.documentElement.scrollHeight
+            }
+        }
+    }
+
+
+    var box = document.getElementsByClassName('box')[0];
+    console.log(box);
+
+    var info = box.getBoundingClientRect();
+
+    box.style.width = '400px';
+    console.log(info);
+
+    // offsetTop, offsetLeft会逐级向上查找, 直到找到定位元素(有absolute)
+    // =================================================================
+    // 9
+    function getElemDocPosition(elem) {
+        var parent = elem.offsetLeft,
+                offsetTop = elem.offsetTop,
+                offsetLeft = elem.offsetParent;
+
+        while (parent) {
+            offsetLeft += parent.offsetLeft;
+            offsetTop += parent.offsetTop;
+            parent = parent.offsetParent;
+        }
+
+        return {
+            left: offsetLeft,
+            top: offsetTop
+        }
+    }
+
+    // =================================================================
+    // 10
+    // window.scroll(100, 100) 等于 window.scrollTo(100, 100)
+    // window.scrollBy(100, 100), 相对于当前位置移动
+
+
+</script>
+</body>
+</html>
