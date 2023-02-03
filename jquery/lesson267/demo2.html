@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .container {
+            width: 150px;
+            height: 300px;
+            border: 3px solid #424242;
+        }
+
+        .container .header {
+            width: 100%;
+            height: 50px;
+            background-color: lightblue;
+            color: #fff;
+            line-height: 50px;
+            text-align: center;
+            font-size: 20px;
+        }
+
+        .container .content {
+            width: 100%;
+            height: 250px;
+            background-color: lightpink;
+        }
+
+        .container.active .header  {
+            background-color: #999;
+        }
+
+        .container.active .content  {
+            background-color: #424242;
+        }
+    </style>
+</head>
+<body>
+<!--<div class="container" checked data-test="test">-->
+<!--    <div class="header">头部</div>-->
+<!--    <div class="content"></div>-->
+<!--</div>-->
+
+<!------------------------------------------------------------------>
+<!--&lt;!&ndash; 2 &ndash;&gt;-->
+<!--<div>-->
+<!--    <p>一段文字</p>-->
+<!--    <button>点击变化</button>-->
+<!--    <p>一段文字</p>-->
+<!--</div>-->
+
+<!------------------------------------------------------------------>
+<!-- 3 -->
+<div>
+    <h1>喜欢的球星</h1>
+    都喜欢 <input type="checkbox" />
+    库里 <input type="checkbox" />
+    詹姆斯 <input type="checkbox" />
+    哈登 <input type="checkbox" />
+</div>
+
+<div>
+    <h1>足球球星</h1>
+    都喜欢 <input type="checkbox" />
+    C罗 <input type="checkbox" />
+    梅西 <input type="checkbox" />
+    内马尔 <input type="checkbox" />
+</div>
+
+<script src="../js/jquery-3.6.3.js"></script>
+<script type="text/javascript">
+    // $('.container').click(function(e) {
+    //     console.log(1);
+    //     if ($(this).hasClass('active')) {
+    //         console.log(2);
+    //         $(this).removeClass('active');
+    //     } else {
+    //         console.log(3);
+    //         $(this).addClass('active');
+    //     }
+    // })
+    //
+    // // ==
+    // // attr, prop
+    // console.log($('div').attr('class'));    // 获取属性
+    // console.log($('div').attr('class', 'newContainer'));    // 获取属性
+    // // 不存在的也可以, 特殊的也可以, checked=false也是checked
+    // // attr函数操作的是文档节点的属性，
+    // // 设置的属性值只能是字符串类型；
+    // // prop函数操作的是js对象的属性，
+    // // 设置的属性值可以是包括数组和对象在内的任意类型。
+    // console.log($('div').attr('data-test'));    // 指定以熟悉只能attr
+    // console.log($('div').prop('data-test'));
+
+    // 获取value, .val()
+    // serialize, 获取一系列value值, 需要在表单里
+    // 需要修改直接传val('新属性值'), 页面中的值不会改，但不影响
+    // val(function(idx, oldvalue){});, 用处不多
+
+    // ================================================
+    // // 查找下一个, 参数可以指定对象
+    // // nextAll下面所有
+    // $('button').click(function() {
+    //     $(this).next('p').css('font-size', '30px');
+    // })
+
+    // console.log($('input').eq(0).nextAll());
+
+    // 这段代码在新edge里有问题,
+    // 会自动生成input hidden导致eq(0)不是第一个
+    // 尽量用this, chrome没事
+    $("h1").next().click(function() {
+        if ($(this).prop("checked")) {
+            $(this).nextUntil('h1').prop("checked", true);
+        } else {
+            $(this).nextUntil('h1').prop("checked", false);
+        }
+    })
+</script>
+</body>
+</html>

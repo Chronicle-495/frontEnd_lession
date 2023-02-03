@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo</title>
+</head>
+<body>
+<div class="wrapper">
+    <div id="logo"></div>
+    <nav>
+        <ul class="cleafix">
+            <li data="first" class="header-item"><a href="">主页</a></li>
+            <li data="second" class="header-item"><a href="">关于</a></li>
+            <li data="third" class="header-item"><a href="">课程</a><span class="icon">新</span></li>
+            <li data="fourth" class="header-item"><a href="">案例</a></li>
+            <li data="fifth" class="header-item"><a href="">联系</a></li>
+        </ul>
+    </nav>
+</div>
+<script src="../js/jquery-3.6.3.js"></script>
+<script type="text/javascript">
+    // ==================== get方法 ====================
+    // get方法, 返回原生DOM对象, 不传参数, 返回数组, 传参数, 返回单个DOM对象
+    console.log($('.wrapper nav ul li').get(),
+            $('.wrapper nav ul li').get(-1));
+
+    // ==================== eq方法 ====================
+    // eq不传参，返回空对象
+    $('.header-item').css({border: '10px solid orange'}).eq(3).css({color: 'orange'});
+    $('.header-item:eq(3)').css({border: '10px solid red'});
+    console.log($('.header-item').eq(-1));
+
+    // ==================== find方法 ====================
+    // 往下一级找
+    $('.wrapper nav').css({border: '10px solid orange'})
+            .find('.header-item').css({border: '10px solid pink'});
+
+
+</script>
+</body>
+</html>

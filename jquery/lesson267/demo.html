@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .active {
+            color: violet;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <ul class="list">
+        <li class="list-item warning active">a</li>
+        <li class="list-item">b</li>
+        <li class="list-item">c</li>
+        <li class="list-item">d</li>
+        <li class="list-item">e</li>
+    </ul>
+</div>
+
+<script src="../js/jquery-3.6.3.js"></script>
+<script type="text/javascript">
+    console.log($('div').html());
+    console.log($('div ul li'));
+    // $('div ul li').css('color', 'orange');
+
+    var eastRank = ['雄鹿', '猛龙', '步行者', '76人', '凯尔特人'];
+
+    console.log($('div ul li').html()); // 访问的时候只会返回第一个
+    // 修改的时候会修改所有的
+    $('div ul li').html((idx, _) => '<span>' + eastRank[idx] + '</span>');
+
+    // 不填参数就是查看全部，填参数就是修改全部
+    // 不会当做html解析
+    // console.log($('ul').text('测试'));
+
+    // size已经被废弃了
+    console.log($('ul').length);
+
+    // $('div ul li').eq(0).addClass(' active');
+    // $('div ul li').addClass(' active');
+    $('div ul li').addClass((idx, _) => 'item-' + (idx + 1));
+    // removeClass('active')是可以消掉active的, 顺序不对也可以
+    $('div ul li').removeClass('active warning');
+
+    $('div ul li').addClass((idx, _) => (idx + 1) % 2 == 0 ? 'active' : 'warning');
+    $('div ul li').removeClass((idx, _) => (idx + 1) % 2 == 0 ? 'active' : 'warning');
+
+    // 返回true和false, 只要有一个符合就是true
+    console.log($('div ul li').hasClass('list-item'));
+
+    // 这里不能用箭头函数，因为箭头函数没有this
+    $('div ul li').click(function (e)  {
+        // this代指e.target
+        $('.list-item').removeClass('active');
+        $(this).addClass('active');
+    })
+
+
+</script>
+</body>
+</html>

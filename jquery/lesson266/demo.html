@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div class="container">
+    <ul>
+        <li>1</li>
+        <li class="special-item">2</li>
+        <li class="special-item">3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <span class="special-item"></span>
+    <span class="special-item"></span>
+    <span class="special-item"></span>
+    <span class="special-item"></span>
+    <span class="special-item"></span>
+</div>
+
+<ul>
+    <li>1</li>
+    <li class="special-item">2</li>
+    <li class="special-item">3</li>
+</ul>
+
+<ul>
+    <li>
+        <ul>
+            <li>a</li>
+            <li>b</li>
+            <li>c</li>
+            <li>d</li>
+            <li>e</li>
+        </ul>
+    </li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+
+<script src="../js/jquery-3.6.3.js"></script>
+<script type="text/javascript">
+    console.log($('.special-item'));
+    console.log($('.container .special-item'));
+    // 还有更简单的方法
+    // filter, 要在集合里找标签
+    console.log($('.container ul').find('li')
+            .filter('.special-item'));
+
+    console.log($('.container ul').find('.special-item'));
+    // 这两个prevObject不一样, 到时候end回退的结果不一样
+    console.log($('.container ul').find('li')
+            .filter(':even').css({backgroundColor: 'orange'}));
+    var items = $('.container ul').find('li')
+            .filter(function (idx, elem) {
+                return idx % 2 == 0;
+            });
+    console.log(items);
+    var items = $('.container ul').find('li')
+            .not(function (idx, elem) {
+                return idx % 2 == 0;
+            });
+    console.log(items);
+    // filter和not相反
+
+    // ======================= has方法 ==========================
+    // 更加语义化
+    console.log($('li').has('ul').css({backgroundColor: 'orange'}));
+    // ======================= is方法 ===========================
+    // a is b ? true/false
+    var bool = $('.container .special-item').is('span');
+    console.log(bool);
+
+    $('ul').click(function(e) {
+        if ($(e.target).is('li')) {
+            console.log($(e.target).text());
+        } else {
+            console.log($(this).text());
+        }
+    });
+
+    // 设置一样的样式, 可用add
+    console.log($('ul').add('li'));
+
+    // ======================= end方法 ==========================
+    // 回退到上一次的状态
+    $('ul').find('li').css({'border': '1px solid red'})
+            .end().css({'border': '10px solid blue'});
+
+    console.log([1, 2, 3].filter(x => x % 2 == 0));
+</script>
+</body>
+</html>

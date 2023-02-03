@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+    <div class="tpl">
+        <p></p>
+        <p></p>
+        <button>添加</button>
+    </div>
+
+    <div class="resArea">
+        总价: <span class="total"></span>
+    </div>
+</div>
+
+<script src="../js/jquery-3.6.3.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+<script type="text/javascript">
+    var stars = [{
+        id: '001',
+        name: '詹姆斯',
+        shoe: '耐克',
+        price: 999
+    }, {
+        id: "002",
+        name: "库里",
+        shoe: '安德玛',
+        price: 333
+    }, {
+        id: '003',
+        name: '哈登',
+        shoe: '阿迪达斯',
+        price: 666
+    }]
+
+    stars.forEach(function (elem, index) {
+        var cloneDOM = $('.tpl').clone().removeClass('tpl');
+
+        cloneDOM.find('p').first().text(elem.shoe);
+
+        cloneDOM.insertBefore($('.resArea'));
+    })
+</script>
+</body>
+</html>

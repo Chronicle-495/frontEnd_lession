@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>课时1</title>
+</head>
+<body>
+<div class="wrapper">
+    <div id="logo"></div>
+    <nav>
+        <ul class="cleafix">
+            <li data="first"><a href="">主页</a></li>
+            <li data="second"><a href="">关于</a></li>
+            <li data="third"><a href="">课程</a><span class="icon">新</span></li>
+            <li data="fourth"><a href="">案例</a></li>
+            <li data="fifth"><a href="">联系</a></li>
+        </ul>
+    </nav>
+</div>
+<script src="../js/jquery-3.6.3.js"></script>
+<script>
+    // ==================================================================
+    // // 1. 选择器
+    // $('.wrapper nav ul li').css({border: '5px solid green'});
+    // // 特指第几个 正数正数，负数倒数
+    // $('.wrapper nav ul li:eq(2)').css({border: '5px solid red'});
+    // // 属性选择
+    // $('.wrapper nav ul li[data="third"]').css({border: '5px solid orange'});
+    // // 结尾为th字符的特定属性标签被选中, 用$符号
+    // $('.wrapper nav ul li[data$="th"]').css({border: '5px solid blue'});
+    // // 开头bulabulabula
+    // $('.wrapper nav ul li[data^="f"]').css({border: '5px solid yellow'});
+    // // 不是bulabulabula, 这里必须是完全一摸一样的值
+    // $('.wrapper nav ul li[data!="fourth"]').css({border: '5px solid yellow'});
+
+    // ==================================================================
+    // // 容错机制
+    // $(null);
+    // $(undefined);
+    // $('');
+    // // 5个标签里只有一个有，那就执行有的那一个
+    // // 原生js会报错，都不执行
+    // $('.wrapper nav li').each(function (idx, el) {
+    //     console.log(el);
+    //     $(el).find('.icon')
+    //             .css({fontSize: '12px', color: 'red'});
+    // })
+
+    // ==================================================================
+    // 不要把脚本写在head里面，因为脚本是从上到下执行的，
+    // 如果脚本在head里面，那么就会先执行脚本，
+    // 然后再执行body里面的内容，这样就会导致脚本执行不到body里面的内容
+    // 如果非要写上面，可以用$(document).ready(function () {})
+    // $(document).on('ready', function () {
+    //     // 搞事情
+    // })
+    // // 这样也可以
+    // $(document).ready(function () {
+    //     // 搞事情2
+    //     console.log('还没有加载完毕');
+    // })
+    // // 还可以这样
+    // $(function () {
+    //     // 搞事情3
+    //     console.log('还没有加载完毕');
+    // })
+    // // 等所有资源都加载完毕，再执行脚本, 用于轮播图计算宽高等
+    // $(window).on('load', function() {
+    //     // 搞事情4
+    //     console.log('全部加载完毕');
+    // })
+    // // 也可以, 错, 不可以了, 3.0以上已经
+    // // 不支持$('#id').load(function() { });了
+    // $(window).load(function () {
+    //     // 搞事情5
+    //     console.log('全部加载完毕');
+    // })
+
+    // ==================================================================
+    // // 第二个参数是上下文，就是在哪个范围内找
+    // var something = $('.wrapper #logo');
+    // var test = $('#logo', '.wrapper');
+    // console.log(something[0]);
+    // console.log(test[0]);
+    // // $() JQ对象
+    // // jQuery.fn.init 构造函数
+    // // 不必担心自己定的变量名和JQ的变量名冲突，
+    // // 因为它封闭了一个作用域，不会冲突
+    // // 类似这样的实现
+    // (function () {
+    //     function jQuery(selector) {
+    //         new jQuery.prototype.init(selector);
+    //     }
+    //
+    //     jQuery.prototype.init = function (selector) {
+    //         this.length = 0;
+    //         // 按照响应的规则，去找到对应的元素，包装成JQ对象
+    //         if (selector.indexOf('.') != -1) {
+    //             var elem = document.getElementsByClassName(selector.slice(1));
+    //         } else if (selector.indexOf('#') != -1) {
+    //             var elem = document.getElementById(selector.slice(1));
+    //             console.log(elem);
+    //         } else {
+    //             var elem = document.getElementsByTagName(selector);
+    //         }
+    //
+    //         if (elem.length == undefined) {
+    //             this[0] = elem;
+    //             this.length++;
+    //         } else {
+    //             for (var i = 0; i < elem.length; i++) {
+    //                 this[i] = elem[i];
+    //                 this.length++;
+    //             }
+    //         }
+    //     }
+    //
+    //     window.$ = window.jQuery = jQuery;
+    // })();
+    // $('logo');
+    // ==================================================================
+
+</script>
+</body>
+</html>
