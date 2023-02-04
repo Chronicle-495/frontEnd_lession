@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container"></div>
+</body>
+
+<script src="../js/jquery-3.6.3.js"></script>
+<script type="text/javascript">
+    // 工具方法
+    // $.type() 用于检测数据类型
+    // $.isArray() 用于检测是否是数组
+    // $.isFunction() 用于检测是否是函数
+    // $.isWindow() 用于检测是否是window对象
+    // $.isNumeric() 用于检测是否是数字
+    // $.isEmptyObject() 用于检测是否是空对象
+    // $.isPlainObject() 用于检测是否是纯粹的对象
+    // $.inArray() 用于检测数组中是否存在某个值
+    // $.each() 用于遍历数组或对象
+    // $.trim() 用于去除字符串两端的空格
+    // $.extend() 用于合并对象
+    // $.map() 用于遍历数组或对象，返回一个新的数组
+    // $.grep() 用于过滤数组，返回一个新的数组
+    // $.proxy() 用于改变函数的this指向
+    // $.noop() 用于返回一个空函数
+    // $.now() 用于返回当前时间的毫秒数
+    // $.globalEval() 用于执行全局的js代码
+    // $.camelCase() 用于将字符串转换为驼峰命名法
+    // $.nodeName() 用于检测节点的名称是否是指定的名称
+    // $.parseHTML() 用于将字符串转换为DOM对象
+    // $.parseJSON() 用于将字符串转换为JSON对象
+    // $.parseXML() 用于将字符串转换为XML对象
+    // $.when() 用于处理多个异步操作
+    // $.support 用于检测浏览器是否支持某个属性或方法
+    // $.expr 用于扩展jQuery的选择器
+    // $.expr[":"] 用于扩展jQuery的伪类选择器
+    console.log($.type(null));
+    console.log($.type(undefined));
+    console.log($.type([1, 2, 3]));
+    console.log($.type({name: "zs"}));
+    console.log($.type(new Date()));
+    console.log($.type(new RegExp("")));
+
+    // $.proxy(function () {
+    //     console.log(this);
+    // }, {name: "zs"})();
+    //
+    // var $NC = $.noConflict();   // 防止冲突, $也就无效了
+    // console.log($NC('.test'));
+
+    // $.extend({
+    //     min: function (a, b) {
+    //         return a < b ? a : b;
+    //     },
+    // });
+
+    // console.log($.min(5, 10));
+
+    // $.fn.extend({
+    //     clickToShowNumber: function () {
+    //         $(this).click(function () {
+    //             alert($(this).text());
+    //         });
+    //     }
+    // })
+
+    // $.extend(p1, p2, p3) p2, p3合并到p1中
+    // $.extend(true, p1, p2) p2合并到p1中，
+    // 如果p2中的属性是对象，那么就会合并到p1中, true是深拷贝
+
+    // // $.ajax
+    // $.ajax({
+    //     url: 'https://jsonplaceholder.typicode.com/users',
+    //     type: 'GET',
+    //     dataType: 'text',
+    //     timeout: 1000,
+    //     async: true, // 默认就是异步(true)
+    //     success: function (res) {
+    //         console.log(res);
+    //     },
+    //     error: function (err) {
+    //         console.log(err);
+    //     },
+    //     complete: function () {
+    //         console.log('complete');
+    //     },
+    //     // 改变this指向, 默认是参数对象本身
+    //     context: document.body,
+    // })
+
+    // =============================================
+    // console.log(1);
+    //
+    // setTimeout(function () {
+    //     console.log(2);
+    // }, 0);
+    //
+    // console.log(3);
+    //
+    // var cb = $.Callbacks('once');
+    // // once选填, 只执行一次,
+    // // 没填参数, fire一次, 直执行之前设置的函数,
+    // // 函数fire之后不会消失
+    // // memory, fire后得到的函数, fire也会执行
+    // // unique, 去重
+    // // stopOnFalse, 返回false, 后面的函数不会执行
+    //
+    // function test(some) {
+    //     console.log('test执行了', some);
+    // }
+    //
+    // cb.add(test);
+    // cb.fire('一个参数');
+    // cb.fire('一个参数');
+    // cb.fire('一个参数');
+
+    // ===============================================
+    var defer = $.Deferred();
+
+    // 成功
+    defer.done(function (res) {
+        console.log("true");
+    });
+
+    // 失败
+    defer.fail(function (err) {
+        console.log("false");
+    });
+
+    // 过程中
+    defer.progress(function () {
+        console.log('progress');
+    });
+
+    setInterval(function () {
+        var number = Math.random() * 10;
+        if (number > 6) {
+            defer.resolve();
+        } else if (number < 3) {
+            defer.reject();
+        } else {
+            defer.notify();
+        }
+    }, 1000);
+
+    // defer.then(function (res) {
+    //     console.log("true");
+    // }, function (err) {
+    //     console.log("false");
+    // }, function () {
+    //     console.log('progress');
+    // })
+
+</script>
+</html>
