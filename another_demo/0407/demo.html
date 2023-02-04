@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<h2>名著推荐如下</h2>
+<button type="button">点击查看信息</button>
+<ul id="list">
+
+</ul>
+<script>
+    let ul = document.getElementById('list');
+    // 点击按钮, 给服务器发送请求
+    document.querySelector('button').onclick = function () {
+        let xhr = new XMLHttpRequest();
+        xhr.open('get', './book.json', true);
+        xhr.send();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                let obj = JSON.parse(xhr.response);
+                let arr = obj.data;
+                for (let i = 0; i < arr.length; i++) {
+                    console.log(arr[i]);
+
+                    var lis = document.createElement('li');
+                    lis.innerHTML = `<h3>书名: ${arr[i].name}</h3>
+                        <p>作者: ${arr[i].author}</p>`;
+                    ul.appendChild(lis);
+                }
+            }
+        }
+    }
+</script>
+</body>
+</html>

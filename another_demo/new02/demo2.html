@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script src="./js/jquery-3.6.3.js"></script>
+<script>
+  // 一般跨域问题都是后台解决, 前台解决的话, 只能通过jsonp来解决
+  $.ajax({
+    type: 'get',
+    url: 'http://suggestion.baidu.com/su',
+    data: {
+      wd: '肖战'
+    },
+    dataType: 'jsonp',
+    jsonp: 'cb',
+    // jsonpCallback: 'callback', // 可以省略
+    success: function (data) {
+      console.log(data)
+    }
+  })
+</script>
+</body>
+</html>
