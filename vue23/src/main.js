@@ -4,4 +4,3 @@ new Vue({
     render: h => h(App)
 }).$mount('#app');
 
-let a = 1;
